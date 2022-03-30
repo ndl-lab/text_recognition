@@ -3,7 +3,9 @@
 本プログラムは、国立国会図書館が株式会社モルフォAIソリューションズに委託して作成したものです。
 
 ## 依存関係
-元リポジトリ(https://github.com/clovaai/deep-text-recognition-benchmark)をカスタマイズした[deep-text-recognition-benchmark](https://github.com/ndl-lab/deep-text-recognition-benchmark)に依存している
+元リポジトリ(https://github.com/clovaai/deep-text-recognition-benchmark)
+をカスタマイズした[deep-text-recognition-benchmark](https://github.com/ndl-lab/deep-text-recognition-benchmark)
+に依存している
 ```bash
 cd text_recognition
 git clone https://https://github.com/ndl-lab/deep-text-recognition-benchmark
