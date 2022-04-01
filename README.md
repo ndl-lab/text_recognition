@@ -1,4 +1,4 @@
-# Text recognition
+# NDLOCR用テキスト認識モジュール
 画像中のテキストを認識するプロジェクトのリポジトリです。 
 本プログラムは、国立国会図書館が株式会社モルフォAIソリューションズに委託して作成したものです。
 
@@ -22,7 +22,7 @@ pip install tqdm lmdb opencv-python six natsort nltk more-itertools
 - モデルとデータセットのディレクトリを受け取り推論を行う
 - 入力可能なデータ形式はxmlとimgを子に持つディレクトリか、create_xmldataset.py後のデータセット
 
-### Accuracyを出力する
+### Accuracyを出力する機能
 ```bash
 python text_recognition.py \
     $(cat arg_train-model_info) \
@@ -34,7 +34,7 @@ python text_recognition.py \
     --acc
 ```
 
-### Normalized Edit Distanceを出力する
+### Normalized Edit Distanceを出力する機能
 ```bash
 python text_recognition.py \
     $(cat arg_train-model_info) \
@@ -46,7 +46,7 @@ python text_recognition.py \
     --leven
 ```
 
-### どの文字を間違えているか可視化
+### どの文字を間違えているか可視化する機能
 - --outimage_dir行は画像として出力するオプション
 - --stat行はどの文字をどの文字として間違えているかの統計を出力するオプション
 ```bash
@@ -62,7 +62,7 @@ python text_recognition.py \
     --stat
 ```
 
-### XMLとして出力する(create_xmldataset.py後のデータセットには非対応)
+### XMLとして出力する機能(create_xmldataset.pyで処理した後のデータセットには非対応)
 ```bash
 python text_recognition.py \
     $(cat arg_train-model_info) \
