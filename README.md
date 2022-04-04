@@ -30,15 +30,17 @@ export PYTHONPATH=$PYTHONPATH:$(pwd)
     - 標準出力形式はdiff, acc, levenの三種類
 ```bash
 python text_recognition.py --db_path input_dir/ --db_type xmlraw $(cat arg_train-model_info) --character "$(cat data/charset | tr -d '\n')" --batch_max_length 100 --imgW 1200 --imgH 32 --PAD --saved_model models/best_accuracy.pth --batch_size 32 --diff wrong
-- create_xmldataset.py```
+```
+
+- create_xmldataset.py
     - xmlとimgを子に持つディレクトリを指定して、学習に使用するデータベースを作成する
-    - ```bash
-    - python create_xmldataset.py --input_path data/sample/??_大衆人事録?之部/ --output_path databases/train/大衆人事録 databases/valid/大衆人事録 databases/test/大衆人事録
+```bash
+python create_xmldataset.py --input_path data/sample/??_大衆人事録?之部/ --output_path databases/train/大衆人事録 databases/valid/大衆人事録 databases/test/大衆人事録
 ```
 
 ## 使い方
 - モデルとデータセットのディレクトリを受け取り推論を行う
-- 入力可能なデータ形式はxmlとimgを子に持つディレクトリか、create_xmldataset.py後のデータセット
+- 入力可能なデータ形式はNDLOCRXMLDataset形式のxmlとimgを子に持つディレクトリか、create_xmldataset.pyで処理した後のデータセット
 
 ### Accuracyを出力する機能
 ```bash
