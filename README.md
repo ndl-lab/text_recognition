@@ -31,7 +31,7 @@ export PYTHONPATH=$PYTHONPATH:$(pwd)
 ```bash
 python text_recognition.py \
     $(cat arg_train-model_info) \
-    --saved_model models/best_norm_ED_ndl2.pth \
+    --saved_model models/ndlenfixed64-mj0-synth1.pth \
     --character "〓$(cat models/mojilist_NDL.txt | tr -d '\n')" \
     --batch_max_length 100 --imgW 1200 --PAD \
     --batch_size 160 \
@@ -43,7 +43,7 @@ python text_recognition.py \
 ```bash
 python text_recognition.py \
     $(cat arg_train-model_info) \
-    --saved_model models/best_norm_ED_ndl2.pth \
+    --saved_model models/ndlenfixed64-mj0-synth1.pth \
     --character "〓$(cat models/mojilist_NDL.txt | tr -d '\n')" \
     --batch_max_length 100 --imgW 1200 --PAD \
     --batch_size 160 \
@@ -57,7 +57,7 @@ python text_recognition.py \
 ```bash
 python text_recognition.py \
     $(cat arg_train-model_info) \
-    --saved_model models/best_norm_ED_ndl2.pth \
+    --saved_model models/ndlenfixed64-mj0-synth1.pth \
     --character "〓$(cat models/mojilist_NDL.txt | tr -d '\n')" \
     --batch_max_length 100 --imgW 1200 --PAD \
     --batch_size 160 \
@@ -67,11 +67,11 @@ python text_recognition.py \
     --stat
 ```
 
-### XMLとして出力する機能(create_xmldataset.pyで処理した後のデータセットには非対応)
+### XMLとして出力する機能
 ```bash
 python text_recognition.py \
     $(cat arg_train-model_info) \
-    --saved_model models/best_norm_ED_ndl2.pth \
+    --saved_model models/ndlenfixed64-mj0-synth1.pth \
     --character "〓$(cat models/mojilist_NDL.txt | tr -d '\n')" \
     --batch_max_length 100 --imgW 1200 --PAD \
     --batch_size 160 \
