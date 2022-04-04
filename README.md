@@ -1,21 +1,26 @@
 # NDLOCR用テキスト認識モジュール
-画像中のテキストを認識するプロジェクトのリポジトリです。 
+画像中のテキストを認識するモジュールのリポジトリです。 
+
 本プログラムは、国立国会図書館が株式会社モルフォAIソリューションズに委託して作成したものです。
 
-## 依存関係
-元リポジトリ(https://github.com/clovaai/deep-text-recognition-benchmark)
-をカスタマイズした[deep-text-recognition-benchmark](https://github.com/ndl-lab/deep-text-recognition-benchmark)
-に依存している
-```bash
-cd text_recognition
-git clone https://https://github.com/ndl-lab/deep-text-recognition-benchmark
-cd deep-text-recognition-benchmark
-export PYTHONPATH=$PYTHONPATH:$(pwd)
-```
-
+## 環境構築
+python3.7かつ、cuda 11.1をインストール済みの環境の場合
+text_recognitiondirectory直下で以下のコマンドを実行する。
 ```
 pip install torch==1.8.1+cu111 torchvision==0.9.1+cu111 -f https://download.pytorch.org/whl/lts/1.8/torch_lts.html
 pip install tqdm lmdb opencv-python six natsort nltk more-itertools
+wget https://lab.ndl.go.jp/dataset/ndlocr/text_recognition/mojilist_NDL.txt -P ./models
+wget https://lab.ndl.go.jp/dataset/ndlocr/text_recognition/ndlenfixed64-mj0-synth1.pth -P ./models
+```
+
+くわえて、元リポジトリ(https://github.com/clovaai/deep-text-recognition-benchmark)
+をカスタマイズした[deep-text-recognition-benchmark](https://github.com/ndl-lab/deep-text-recognition-benchmark)
+に依存しているため、下記のように
+
+```bash
+git clone https://https://github.com/ndl-lab/deep-text-recognition-benchmark
+cd deep-text-recognition-benchmark
+export PYTHONPATH=$PYTHONPATH:$(pwd)
 ```
 
 ## text_recognition.pyの使い方
@@ -79,13 +84,14 @@ python text_recognition.py \
     - モデルとデータセットのディレクトリを受け取り推論を行う
     - 入力可能なデータ形式はxmlとimgを子に持つディレクトリか、create_xmldataset.py後のデータセット
     - 標準出力形式はdiff, acc, levenの三種類
-    - `python text_recognition.py --db_path input_dir/ --db_type xmlraw $(cat arg_train-model_info) --character "$(cat data/charset | tr -d '\n')" --batch_max_length 100 --imgW 1200 --imgH 32 --PAD --saved_model models/best_accuracy.pth --batch_size 32 --diff wrong
-- create_xmldataset.py
+    - ```python text_recognition.py --db_path input_dir/ --db_type xmlraw $(cat arg_train-model_info) --character "$(cat data/charset | tr -d '\n')" --batch_max_length 100 --imgW 1200 --imgH 32 --PAD --saved_model models/best_accuracy.pth --batch_size 32 --diff wrong
+- create_xmldataset.py```
+
     - xmlとimgを子に持つディレクトリを指定して、学習に使用するデータベースを作成する
-    - `python create_xmldataset.py --input_path data/sample/??_大衆人事録?之部/ --output_path databases/train/大衆人事録 databases/valid/大衆人事録 databases/test/大衆人事録
+    - ```python create_xmldataset.py --input_path data/sample/??_大衆人事録?之部/ --output_path databases/train/大衆人事録 databases/valid/大衆人事録 databases/test/大衆人事録```
 
 
-#### arg_train-model_info
+#### (参考)学習時のパラメータ([deep-text-recognition-benchmark](https://github.com/ndl-lab/deep-text-recognition-benchmark)を参照)
 ```:arg_train-model_info
 --Transformation None --FeatureExtraction VGG --SequenceModeling BiLSTM --Prediction CTC
 ```
