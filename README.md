@@ -15,7 +15,7 @@ wget https://lab.ndl.go.jp/dataset/ndlocr/text_recognition/ndlenfixed64-mj0-synt
 
 くわえて、元リポジトリ(https://github.com/clovaai/deep-text-recognition-benchmark)
 をカスタマイズした[deep-text-recognition-benchmark](https://github.com/ndl-lab/deep-text-recognition-benchmark)
-に依存しているため、下記のように
+に依存しているため、下記のようにリポジトリの追加と環境変数の追加を行う。
 
 ```bash
 git clone https://https://github.com/ndl-lab/deep-text-recognition-benchmark
