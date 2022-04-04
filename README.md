@@ -5,7 +5,7 @@
 
 ## 環境構築
 python3.7かつ、cuda 11.1をインストール済みの環境の場合
-text_recognitiondirectory直下で以下のコマンドを実行する。
+text_recognitionディレクトリ直下で以下のコマンドを実行する。
 ```
 pip install torch==1.8.1+cu111 torchvision==0.9.1+cu111 -f https://download.pytorch.org/whl/lts/1.8/torch_lts.html
 pip install tqdm lmdb opencv-python six natsort nltk more-itertools
