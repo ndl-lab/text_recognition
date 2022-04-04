@@ -33,7 +33,7 @@ python text_recognition.py --db_path input_dir/ --db_type xmlraw $(cat arg_train
 ```
 
 - create_xmldataset.py
-    - xmlとimgを子に持つディレクトリを指定して、学習に使用するデータベースを作成する
+    - NDLOCRXMLDataset形式のxmlとimgを子に持つディレクトリを指定して、学習に使用するデータベースを作成する
 ```bash
 python create_xmldataset.py --input_path data/sample/??_大衆人事録?之部/ --output_path databases/train/大衆人事録 databases/valid/大衆人事録 databases/test/大衆人事録
 ```
