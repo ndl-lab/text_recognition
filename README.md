@@ -23,7 +23,20 @@ cd deep-text-recognition-benchmark
 export PYTHONPATH=$PYTHONPATH:$(pwd)
 ```
 
-## text_recognition.pyの使い方
+## ファイルの説明
+- text_recognition.py
+    - モデルとデータセットのディレクトリを受け取り推論を行う
+    - 入力可能なデータ形式はxmlとimgを子に持つディレクトリか、create_xmldataset.py後のデータセット
+    - 標準出力形式はdiff, acc, levenの三種類
+```bash
+python text_recognition.py --db_path input_dir/ --db_type xmlraw $(cat arg_train-model_info) --character "$(cat data/charset | tr -d '\n')" --batch_max_length 100 --imgW 1200 --imgH 32 --PAD --saved_model models/best_accuracy.pth --batch_size 32 --diff wrong
+- create_xmldataset.py```
+    - xmlとimgを子に持つディレクトリを指定して、学習に使用するデータベースを作成する
+    - ```bash
+    - python create_xmldataset.py --input_path data/sample/??_大衆人事録?之部/ --output_path databases/train/大衆人事録 databases/valid/大衆人事録 databases/test/大衆人事録
+```
+
+## 使い方
 - モデルとデータセットのディレクトリを受け取り推論を行う
 - 入力可能なデータ形式はxmlとimgを子に持つディレクトリか、create_xmldataset.py後のデータセット
 
@@ -79,18 +92,7 @@ python text_recognition.py \
     --xml --outxml_dir outxml
 ```
 
-## ファイル
-- text_recognition.py
-    - モデルとデータセットのディレクトリを受け取り推論を行う
-    - 入力可能なデータ形式はxmlとimgを子に持つディレクトリか、create_xmldataset.py後のデータセット
-    - 標準出力形式はdiff, acc, levenの三種類
-```bash
-python text_recognition.py --db_path input_dir/ --db_type xmlraw $(cat arg_train-model_info) --character "$(cat data/charset | tr -d '\n')" --batch_max_length 100 --imgW 1200 --imgH 32 --PAD --saved_model models/best_accuracy.pth --batch_size 32 --diff wrong
-- create_xmldataset.py```
-    - xmlとimgを子に持つディレクトリを指定して、学習に使用するデータベースを作成する
-    - ```bash
-    - python create_xmldataset.py --input_path data/sample/??_大衆人事録?之部/ --output_path databases/train/大衆人事録 databases/valid/大衆人事録 databases/test/大衆人事録
-```
+
 
 
 #### (参考)学習時のパラメータ([deep-text-recognition-benchmark](https://github.com/ndl-lab/deep-text-recognition-benchmark)を参照)
