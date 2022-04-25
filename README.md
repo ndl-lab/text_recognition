@@ -22,7 +22,7 @@ wget https://lab.ndl.go.jp/dataset/ndlocr/text_recognition/ndlenfixed64-mj0-synt
 に依存しているため、下記のようにリポジトリの追加と環境変数の追加を行う。
 
 ```bash
-git clone https://https://github.com/ndl-lab/deep-text-recognition-benchmark
+git clone https://github.com/ndl-lab/deep-text-recognition-benchmark
 cd deep-text-recognition-benchmark
 export PYTHONPATH=$PYTHONPATH:$(pwd)
 ```

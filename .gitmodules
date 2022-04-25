@@ -1,0 +1,3 @@
+[submodule "deep-text-recognition-benchmark"]
+	path = deep-text-recognition-benchmark
+	url = https://github.com/ndl-lab/deep-text-recognition-benchmark.git
