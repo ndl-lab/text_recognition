@@ -347,6 +347,7 @@ class XMLRawDatasetWithCli(IterableDataset):
         for xml_line in root.find('PAGE'):
             is_block_page_num = (xml_line.tag == 'BLOCK') and (xml_line.attrib['TYPE'] == 'ノンブル')
             is_block_pillar = (xml_line.tag == 'BLOCK') and (xml_line.attrib['TYPE'] == '柱')
+            is_block_rubi = (xml_line.tag == 'BLOCK') and (xml_line.attrib['TYPE'] == 'ルビ')
             do_yield = (xml_line.tag == 'LINE') or (is_block_page_num and self.yield_block_page_num) or (is_block_pillar and self.yield_block_pillar) or (is_block_rubi and self.yield_block_rubi)
             if not do_yield:
                 print("This {0} elemetn will be skipped.".format(xml_line.tag))
