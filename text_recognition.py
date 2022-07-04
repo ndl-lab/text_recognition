@@ -489,7 +489,7 @@ class InferencerWithCLI:
         return
 
     def inference_wich_cli(self, img_data, xml_data, accept_empty=False,
-                           yield_block_pillar=True, yield_block_page_num=True):
+                           yield_block_pillar=True, yield_block_page_num=True, yield_block_rubi=True):
 
         cudnn.benchmark = True
         cudnn.deterministic = True
@@ -497,7 +497,8 @@ class InferencerWithCLI:
         dataset = XMLRawDatasetWithCli(img_data, xml_data,
                                        accept_empty=accept_empty,
                                        yield_block_pillar=yield_block_pillar,
-                                       yield_block_page_num=yield_block_page_num)
+                                       yield_block_page_num=yield_block_page_num,
+                                       yield_block_rubi=yield_block_rubi)
         generator = self.inf.gen(dataset, keep_remain=self.opt.xml)
 
         result_list = []
