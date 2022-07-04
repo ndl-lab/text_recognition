@@ -321,7 +321,7 @@ class ListRawDataset(IterableDataset):
 class XMLRawDatasetWithCli(IterableDataset):
     def __init__(self, img_data, xml_data,
                  accept_empty=False, accept_only_en=False,
-                 sensitive=False, yield_block_pillar=True, yield_block_page_num=True):
+                 sensitive=False, yield_block_pillar=True, yield_block_page_num=True,yield_block_rubi=True):
 
         self.xml_data = xml_data
         self.orig_img = img_data
@@ -332,7 +332,7 @@ class XMLRawDatasetWithCli(IterableDataset):
         self.remains = None
         self.yield_block_pillar = yield_block_pillar
         self.yield_block_page_num = yield_block_page_num
-
+        self.yield_block_rubi=yield_block_rubi
         groups = pt.match(self.root.tag).groups()
         if groups[1]:
             self.namespace = f"{{{groups[1]}}}"
@@ -347,7 +347,7 @@ class XMLRawDatasetWithCli(IterableDataset):
         for xml_line in root.find('PAGE'):
             is_block_page_num = (xml_line.tag == 'BLOCK') and (xml_line.attrib['TYPE'] == 'ノンブル')
             is_block_pillar = (xml_line.tag == 'BLOCK') and (xml_line.attrib['TYPE'] == '柱')
-            do_yield = (xml_line.tag == 'LINE') or (is_block_page_num and self.yield_block_page_num) or (is_block_pillar and self.yield_block_pillar)
+            do_yield = (xml_line.tag == 'LINE') or (is_block_page_num and self.yield_block_page_num) or (is_block_pillar and self.yield_block_pillar) or (is_block_rubi and self.yield_block_rubi)
             if not do_yield:
                 print("This {0} elemetn will be skipped.".format(xml_line.tag))
                 print(xml_line.attrib)
